@@ -1,4 +1,4 @@
-package info.herder.uebungen.zweivier;
+package taks.uebungen.zwei.vier;
 
 public class Kunde {
     private String zName;
