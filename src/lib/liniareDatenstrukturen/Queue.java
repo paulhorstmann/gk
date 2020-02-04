@@ -1,4 +1,5 @@
 package lib.liniareDatenstrukturen;
 
-public class stack {
+public class Queue {
+
 }
