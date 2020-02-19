@@ -15,13 +15,13 @@ public class SearchElement<ContentType> {
             keywordarray[i] = keyword;
         }
     }
-
-    public void deleteKeyword(String keyword){
-        int i = keywordarray.length;
-        for (int j= 0; j<i; j++){
-            if(keywordarray[j].equals(keyword)) keywordarray[j];
-        }
-    }
+//
+//    public void deleteKeyword(String keyword){
+//        int i = keywordarray.length;
+//        for (int j= 0; j<i; j++){
+//            if(keywordarray[j].equals(keyword)) keywordarray[j];
+//        }
+//    }
 
     public ContentType getReference() {
         return reference;

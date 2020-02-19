@@ -1,13 +1,18 @@
-// "2 3 4 5 1 + * * *"
 package taks.projekte.Postfix;
+
 import lib.liniareDatenstrukturen.Stack;
+import static lib.Eingabe.ConsoleInput.sInput;
 
 public class Rechner {
-    public Rechner(String pTerm) {
+    public Rechner(String lTerm) {
+        inOrderPostfix(lTerm);
+    }
+
+    public Integer postfixRechner(String pTerm) {
         Stack<Integer> lStack = new Stack<Integer>();
         String lZahl;
         for (int i = 0; i < pTerm.length(); i++) {
-            if (obZahl("" + pTerm.charAt(i))) {
+            if (istZahl("" + pTerm.charAt(i))) {
                 String lZahl1 = "" + pTerm.charAt(i);
                 String lZahl2;
                 i++;
@@ -33,9 +38,11 @@ public class Rechner {
             }
         }
         System.out.println(lStack.top());
+        return lStack.top();
     }
 
-    public boolean obZahl(String pZahl) {
+
+    public boolean istZahl(String pZahl) {
         switch (pZahl) {
             case "0":
             case "1":
@@ -62,4 +69,24 @@ public class Rechner {
         }
         return false;
     }
+
+    public String inOrderPostfix(String pTerm){
+        Stack<Character> lStack = new Stack<Character>();
+        String lAusgabe = "";
+        String lZeichen = "";
+        for(int i = 0; i> pTerm.length(); i++){
+            lZeichen = "" + pTerm.charAt(i);
+            if(lZeichen.equals(")")){
+                lAusgabe = "" + lStack.top();
+                lStack.pop();
+            }else if(obOperator(lZeichen)){
+                lStack.push(lZeichen.charAt(0));
+            }else if(istZahl(lZeichen)){
+                lAusgabe = lAusgabe + lZeichen;
+            }
+        }
+        System.out.println(lAusgabe);
+        return lAusgabe;
+    }
+
 }
