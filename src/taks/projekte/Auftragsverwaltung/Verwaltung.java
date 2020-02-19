@@ -3,11 +3,7 @@ package taks.projekte.Auftragsverwaltung;
 import lib.liniareDatenstrukturen.Queue;
 
 public class Verwaltung {
-    Queue<Auftrag> zAuftraege = new Queue<Auftrag>();
-
-    public Verwaltung() {
-
-    }
+    private Queue<Auftrag> zAuftraege = new Queue<Auftrag>();
 
     public void nimmAuftragEntgegen(String pAuftragsbeschreibung){
         zAuftraege.enqueue(new Auftrag(pAuftragsbeschreibung));

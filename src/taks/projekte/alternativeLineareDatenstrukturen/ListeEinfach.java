@@ -1,11 +1,15 @@
-package lib.liniareDatenstrukturen;
+package taks.projekte.alternativeLineareDatenstrukturen;
 
-public class List<ContentType> {
+import com.sun.source.tree.ConditionalExpressionTree;
+import lib.liniareDatenstrukturen.Element;
+
+public class ListeEinfach<ContentType> {
+
     protected Element<ContentType> zKopf;
     protected Element<ContentType> zPositionszeiger;
     protected Element<ContentType> zEnde;
 
-    public List() {
+    public ListeEinfach() {
         zKopf = new Element<ContentType>();
         zPositionszeiger = zKopf;
         zEnde = new Element<ContentType>();
@@ -33,7 +37,9 @@ public class List<ContentType> {
     }
 
     public void toLast() {
-        if (!isEmpty()) zPositionszeiger = zEnde.gibVorgaenger();
+        if (!isEmpty()) {
+            zPositionszeiger = zEnde.gibVorgaenger();
+        }
     }
 
     public ContentType getContent() {
@@ -78,7 +84,7 @@ public class List<ContentType> {
         }
     }
 
-    public void concat(List<ContentType> pList) {
+    public void concat(ListeEinfach<ContentType> pList) {
         if (this != pList && pList != null && !pList.isEmpty()) {
             zEnde.gibVorgaenger().setzeNachfolger(pList.zKopf.gibNachfolger());
             pList.zKopf.gibNachfolger().setzeVorgaenger(zEnde.gibVorgaenger());
@@ -90,4 +96,20 @@ public class List<ContentType> {
             pList.zPositionszeiger = lNeuesEnde;
         }
     }
+
+//    private Element<ContentType> gibVorgaenger(Element<ContentType> pZiel) {
+//        Element<ContentType> lVorgaenger;
+//        if(hasAccess()){
+//            return null;
+//        }else{
+//            toFirst();
+//            lVorgaenger =
+//            while(pZiel != zPositionszeiger){
+//                next();
+//            }
+//
+//            return zPositionszeiger;
+//        }
+//    }
+
 }
