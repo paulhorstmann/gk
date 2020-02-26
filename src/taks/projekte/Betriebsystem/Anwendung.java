@@ -17,4 +17,3 @@ public class Anwendung {
         return zDateiname;
     }
 }
-+
