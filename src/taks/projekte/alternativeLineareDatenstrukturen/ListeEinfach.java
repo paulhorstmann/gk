@@ -97,19 +97,19 @@ public class ListeEinfach<ContentType> {
         }
     }
 
-//    private Element<ContentType> gibVorgaenger(Element<ContentType> pZiel) {
-//        Element<ContentType> lVorgaenger;
-//        if(hasAccess()){
-//            return null;
-//        }else{
-//            toFirst();
-//            lVorgaenger =
-//            while(pZiel != zPositionszeiger){
-//                next();
-//            }
-//
-//            return zPositionszeiger;
-//        }
-//    }
+    private Element<ContentType> gibVorgaenger(Element<ContentType> pZiel) {
+        Element<ContentType> lVorgaenger = null;
+        if(hasAccess()){
+            return null;
+        }else{
+            toFirst();
+            if(zKopf.gibNachfolger() == pZiel)return zKopf;
+            while(true){
+                next();
+                if(zPositionszeiger == pZiel) return lVorgaenger;
+                lVorgaenger = zPositionszeiger;
+            }
+        }
+    }
 
 }

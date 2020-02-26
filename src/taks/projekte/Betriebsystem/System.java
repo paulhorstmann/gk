@@ -9,7 +9,7 @@ public class System {
         zAnwendungen.enqueue(new Anwendung(pID, pDateiname));
     }
 
-    public void beendeZugrif(){
+    public void beendeZugriff(){
         zAnwendungen.dequeue();
     }
 

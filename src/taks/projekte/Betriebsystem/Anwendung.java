@@ -2,18 +2,19 @@ package taks.projekte.Betriebsystem;
 
 public class Anwendung {
     private int zID;
-    private String zDateinahme;
+    private String zDateiname;
 
-    public Anwendung(int pID, String pDateinahme) {
+    public Anwendung(int pID, String pDateiname) {
         zID = pID;
-        zDateinahme = pDateinahme;
+        zDateiname = pDateiname;
     }
 
     public int gibID() {
         return zID;
     }
 
-    public String gibDateinahme() {
-        return zDateinahme;
+    public String gibDateiname() {
+        return zDateiname;
     }
 }
++
