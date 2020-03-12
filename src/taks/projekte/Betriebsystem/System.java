@@ -16,9 +16,10 @@ public class System {
     public void loescheAnwendung(int pID){
         Queue<Anwendung> lAnwendungen = new Queue<Anwendung>();
         while(!zAnwendungen.isEmpty()){
-            if (zAnwendungen.front().gibID() == pID)continue;
-            lAnwendungen.enqueue(zAnwendungen.front());
-            zAnwendungen.dequeue();
+            if (zAnwendungen.front().gibID() > pID) {
+                lAnwendungen.enqueue(zAnwendungen.front());
+                zAnwendungen.dequeue();
+            }
         }
         zAnwendungen = lAnwendungen;
     }

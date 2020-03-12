@@ -1,11 +1,13 @@
 package test;
 
 import lib.liniareDatenstrukturen.List;
+import lib.liniareDatenstrukturen.Queue;
+import lib.liniareDatenstrukturen.Stack;
 
 import static lib.Eingabe.ConsoleInput.sInput;
 
 public class TodoList {
-    List<String>  zAufgaben = new List<String>();
+    Queue<String> zAufgaben = new Queue<>();
 
     public TodoList(){
         System.out.println("Todo liste wurde gestartet \n");
@@ -21,17 +23,19 @@ public class TodoList {
     }
 
     public void fuegeAufgabeHinzu(String pAufgabentext){
-        if (!pAufgabentext.equals("")) zAufgaben.append(new String("Hallo"));
+        if (!pAufgabentext.isEmpty()) zAufgaben.enqueue(pAufgabentext);
         System.out.println();
     }
 
     public void gibAufgabenAus(){
-        zAufgaben.toFirst();
         if(zAufgaben.isEmpty()) System.out.println("Keine Aufgaben vorhanden \n");
-        while(zAufgaben.hasAccess()) {
-            System.out.println(zAufgaben.getContent());
-            zAufgaben.next();
+        Queue<String> lAufgaben= new Queue<>();
+        while (!zAufgaben.isEmpty()){
+            System.out.println(zAufgaben.front());
+            lAufgaben.enqueue(zAufgaben.front());
+            zAufgaben.dequeue();
         }
+        zAufgaben=lAufgaben;
         System.out.println();
     }
 
@@ -41,13 +45,14 @@ public class TodoList {
     }
 
     public void löscheAufgabe(String pAufgabentext){
-        zAufgaben.toFirst();
-        while(zAufgaben.hasAccess()){
-            if(zAufgaben.getContent().equals(pAufgabentext)){
-                zAufgaben.remove();
-                return;
+        Queue<String> lAufgaben= new Queue<>();
+        while(!zAufgaben.isEmpty()) {
+            if(!zAufgaben.front().equals(pAufgabentext)) {
+                lAufgaben.enqueue(zAufgaben.front());
+                zAufgaben.dequeue();
             }
-            zAufgaben.next();
+            zAufgaben.dequeue();
         }
+        zAufgaben=lAufgaben;
     }
 }
