@@ -1,13 +1,22 @@
 package taks.uebungen.zwei.vier;
 
-public class Kunde {
+import lib.untils.ComparableContent;
+
+public class Kunde implements ComparableContent<Kunde> {
     private String zName;
+    private int zKundennummer;
     private String zAdresse;
     private double zOffenerBetrag;
 
     public Kunde(String pName, String pAdresse){
         zName = pName;
         zAdresse = pAdresse;
+    }
+
+    public Kunde(String pName, String pAdresse, int pKundenummer){
+        zName = pName;
+        zAdresse = pAdresse;
+        zKundennummer = pKundenummer;
     }
 
     public void alleKundenRechnungenBegleichen(){
@@ -42,6 +51,10 @@ public class Kunde {
         return zName;
     }
 
+    public int gibKundennummer() {
+        return zKundennummer;
+    }
+
     public String gibErinnerungsschreiben(){
         System.out.println("Sehr geehrter Frau/Herr " + zName + ", sie haben noch einen Betrag von " + zOffenerBetrag + " Euro zu begleichen");
         return "Sehr geehrter Frau/Herr " + zName + ", sie haben noch einen Betrag von " + zOffenerBetrag + " Euro zu begleichen";
@@ -49,5 +62,20 @@ public class Kunde {
 
     public double gibOffenerBetrag(){
         return zOffenerBetrag;
+    }
+
+    @Override
+    public boolean isEqual(Kunde pComparableContent) {
+        return pComparableContent.gibName().equals(zName);
+    }
+
+    @Override
+    public boolean isGreater(Kunde pComparableContent) {
+        return pComparableContent.gibName().compareTo(zName) < 0;
+    }
+
+    @Override
+    public boolean isLess(Kunde pComparableContent) {
+        return pComparableContent.gibName().compareTo(zName) > 0;
     }
 }

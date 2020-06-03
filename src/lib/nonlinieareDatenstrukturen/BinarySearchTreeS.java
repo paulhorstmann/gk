@@ -81,19 +81,30 @@ public class BinarySearchTreeS<ContentType> {
         }
     }
 
-    public ContentType getContent() {
+    public ContentType gibInhalt() {
         return zInhalt;
     }
 
-    public BinarySearchTreeS<ContentType> getLeftTree() {
+    public BinarySearchTreeS<ContentType> gibLinkenSohn() {
         return zLinkerSohn;
     }
 
-    public BinarySearchTreeS<ContentType> getRightTree() {
+    public BinarySearchTreeS<ContentType> gibRechtenSohn() {
         return zRechterSohn;
     }
 
     public int gibSchlüssel() {
         return zSchluessel;
+    }
+
+    private BinarySearchTreeS<ContentType> gibVaterDesSymmetrischenNachfolgers(BinarySearchTreeS<ContentType> pKnoten) {
+        BinarySearchTreeS<ContentType> lKnoten = pKnoten.gibRechtenSohn();
+        while (lKnoten.gibLinkenSohn().isEmpty())
+            lKnoten = lKnoten.gibRechtenSohn();
+        while (!lKnoten.gibLinkenSohn().isEmpty()) {
+            if (lKnoten.gibLinkenSohn().gibLinkenSohn().isEmpty()) return lKnoten;
+            lKnoten = lKnoten.gibLinkenSohn();
+        }
+        return null;
     }
 }
